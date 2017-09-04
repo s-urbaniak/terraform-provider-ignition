@@ -15,47 +15,41 @@
 package types
 
 import (
+	"encoding/json"
 	"fmt"
-
-	"github.com/coreos/ignition/config/validate/report"
 )
 
-func (n Disk) Validate() report.Report {
-	return report.Report{}
+type Disk struct {
+	Device     Path        `json:"device,omitempty"`
+	WipeTable  bool        `json:"wipeTable,omitempty"`
+	Partitions []Partition `json:"partitions,omitempty"`
+}
+type disk Disk
+
+func (n *Disk) UnmarshalJSON(data []byte) error {
+	tn := disk(*n)
+	if err := json.Unmarshal(data, &tn); err != nil {
+		return err
+	}
+	*n = Disk(tn)
+	return n.AssertValid()
 }
 
-func (n Disk) ValidateDevice() report.Report {
+func (n Disk) AssertValid() error {
 	if len(n.Device) == 0 {
-		return report.ReportFromError(fmt.Errorf("disk device is required"), report.EntryError)
+		return fmt.Errorf("disk device is required")
 	}
-	if err := validatePath(string(n.Device)); err != nil {
-		return report.ReportFromError(err, report.EntryError)
-	}
-	return report.Report{}
-}
-
-func (n Disk) ValidatePartitions() report.Report {
-	r := report.Report{}
 	if n.partitionNumbersCollide() {
-		r.Add(report.Entry{
-			Message: fmt.Sprintf("disk %q: partition numbers collide", n.Device),
-			Kind:    report.EntryError,
-		})
+		return fmt.Errorf("disk %q: partition numbers collide", n.Device)
 	}
 	if n.partitionsOverlap() {
-		r.Add(report.Entry{
-			Message: fmt.Sprintf("disk %q: partitions overlap", n.Device),
-			Kind:    report.EntryError,
-		})
+		return fmt.Errorf("disk %q: partitions overlap", n.Device)
 	}
 	if n.partitionsMisaligned() {
-		r.Add(report.Entry{
-			Message: fmt.Sprintf("disk %q: partitions misaligned", n.Device),
-			Kind:    report.EntryError,
-		})
+		return fmt.Errorf("disk %q: partitions misaligned", n.Device)
 	}
-	// Disks which have no errors at this point will likely succeed in sgdisk
-	return r
+	// Disks which get to this point will likely succeed in sgdisk
+	return nil
 }
 
 // partitionNumbersCollide returns true if partition numbers in n.Partitions are not unique.
@@ -74,7 +68,7 @@ func (n Disk) partitionNumbersCollide() bool {
 }
 
 // end returns the last sector of a partition.
-func (p Partition) end() int {
+func (p Partition) end() PartitionDimension {
 	if p.Size == 0 {
 		// a size of 0 means "fill available", just return the start as the end for those.
 		return p.Start

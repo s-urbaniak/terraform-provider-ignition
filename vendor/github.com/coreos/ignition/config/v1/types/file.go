@@ -15,17 +15,38 @@
 package types
 
 import (
+	"encoding/json"
 	"errors"
-	"path"
+	"os"
 )
 
 var (
-	ErrPathRelative = errors.New("path not absolute")
+	ErrFileIllegalMode = errors.New("illegal file mode")
 )
 
-func validatePath(p string) error {
-	if !path.IsAbs(p) {
-		return ErrPathRelative
+type FileMode os.FileMode
+
+type File struct {
+	Path     Path     `json:"path,omitempty"`
+	Contents string   `json:"contents,omitempty"`
+	Mode     FileMode `json:"mode,omitempty"`
+	Uid      int      `json:"uid,omitempty"`
+	Gid      int      `json:"gid,omitempty"`
+}
+type fileMode FileMode
+
+func (m *FileMode) UnmarshalJSON(data []byte) error {
+	tm := fileMode(*m)
+	if err := json.Unmarshal(data, &tm); err != nil {
+		return err
+	}
+	*m = FileMode(tm)
+	return m.AssertValid()
+}
+
+func (m FileMode) AssertValid() error {
+	if (m &^ 07777) != 0 {
+		return ErrFileIllegalMode
 	}
 	return nil
 }

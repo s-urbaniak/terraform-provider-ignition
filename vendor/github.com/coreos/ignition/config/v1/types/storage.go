@@ -14,18 +14,8 @@
 
 package types
 
-import (
-	"errors"
-	"path"
-)
-
-var (
-	ErrPathRelative = errors.New("path not absolute")
-)
-
-func validatePath(p string) error {
-	if !path.IsAbs(p) {
-		return ErrPathRelative
-	}
-	return nil
+type Storage struct {
+	Disks       []Disk       `json:"disks,omitempty"`
+	Arrays      []Raid       `json:"raid,omitempty"`
+	Filesystems []Filesystem `json:"filesystems,omitempty"`
 }

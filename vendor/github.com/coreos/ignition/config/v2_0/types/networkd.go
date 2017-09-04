@@ -14,18 +14,6 @@
 
 package types
 
-import (
-	"errors"
-	"path"
-)
-
-var (
-	ErrPathRelative = errors.New("path not absolute")
-)
-
-func validatePath(p string) error {
-	if !path.IsAbs(p) {
-		return ErrPathRelative
-	}
-	return nil
+type Networkd struct {
+	Units []NetworkdUnit `json:"units,omitempty"`
 }
