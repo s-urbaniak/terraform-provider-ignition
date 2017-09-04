@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/coreos/ignition/config/types"
+	types "github.com/coreos/ignition/config/v2_0/types"
 )
 
 func TestIngnitionFilesystem(t *testing.T) {

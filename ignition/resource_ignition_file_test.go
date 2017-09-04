@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/coreos/ignition/config/types"
+	types "github.com/coreos/ignition/config/v2_0/types"
 )
 
 func TestIngnitionFile(t *testing.T) {

@@ -3,7 +3,7 @@ package ignition
 import (
 	"fmt"
 
-	"github.com/coreos/ignition/config/types"
+	types "github.com/coreos/ignition/config/v2_0/types"
 	"github.com/hashicorp/terraform/helper/schema"
 )
 

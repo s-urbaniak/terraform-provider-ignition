@@ -6,7 +6,8 @@ import (
 
 	"github.com/hashicorp/terraform/helper/schema"
 
-	"github.com/coreos/ignition/config/types"
+	"github.com/coreos/ignition/config"
+	types "github.com/coreos/ignition/config/v2_0/types"
 )
 
 var configReferenceResource = &schema.Resource{
@@ -119,7 +120,13 @@ func renderConfig(d *schema.ResourceData, c *cache) (string, error) {
 		return "", err
 	}
 
-	bytes, err := json.Marshal(i)
+	i_new := config.TranslateFromV2_0(*i)
+	i_new.Ignition.Version = "2.1.0"
+	if r := i_new.Ignition.Validate(); len(r.Entries) > 0 {
+		return "", fmt.Errorf("validation failed: %v", r.Entries)
+	}
+
+	bytes, err := json.Marshal(&i_new)
 
 	if err != nil {
 		return "", err

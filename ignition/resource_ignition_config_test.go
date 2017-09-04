@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/coreos/ignition/config/types"
+	types "github.com/coreos/ignition/config/v2_0/types"
 	"github.com/hashicorp/terraform/helper/resource"
 	"github.com/hashicorp/terraform/terraform"
 )
