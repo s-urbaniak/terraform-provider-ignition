@@ -3,6 +3,12 @@
 	"ignore": "appengine test github.com/hashicorp/nomad/ github.com/hashicorp/terraform/backend",
 	"package": [
 		{
+			"checksumSHA1": "IJ5huG2Ab2OgNxH6yZPNXcqo3wg=",
+			"path": "github.com/ajeddeloh/go-json",
+			"revision": "73d058cf8437a1989030afe571eeab9f90eebbbd",
+			"revisionTime": "2016-07-27T22:31:20Z"
+		},
+		{
 			"checksumSHA1": "FIL83loX9V9APvGQIjJpbxq53F0=",
 			"path": "github.com/apparentlymart/go-cidr/cidr",
 			"revision": "7e4b007599d4e2076d9a81be723b3912852dda2c",
@@ -239,16 +245,70 @@
 			"revisionTime": "2017-06-09T14:46:27Z"
 		},
 		{
-			"checksumSHA1": "0sYnSIFxkXCVRYj3afRu8EyIl0g=",
+			"checksumSHA1": "WZCAw55IjcuS1Tj5L2jNuqDoYNE=",
+			"path": "github.com/coreos/ignition/config",
+			"revision": "11813c57bc05f30644bbae7891ae30a4a62e0b33",
+			"revisionTime": "2017-07-29T00:10:37Z"
+		},
+		{
+			"checksumSHA1": "Lk8POHmeY8VHH5VlcqTf3QvQv+I=",
 			"path": "github.com/coreos/ignition/config/types",
-			"revision": "211ab9d5a30be883c39a47642d05fdc6ce32b76e",
-			"revisionTime": "2016-12-23T13:37:58Z"
+			"revision": "11813c57bc05f30644bbae7891ae30a4a62e0b33",
+			"revisionTime": "2017-07-29T00:10:37Z"
+		},
+		{
+			"checksumSHA1": "IhYHDLJGvU8ZZTOUnYyg8rGGwDM=",
+			"path": "github.com/coreos/ignition/config/v1",
+			"revision": "11813c57bc05f30644bbae7891ae30a4a62e0b33",
+			"revisionTime": "2017-07-29T00:10:37Z"
+		},
+		{
+			"checksumSHA1": "f2sMIR2X2S3k7Cmlmn9mVvP50P4=",
+			"path": "github.com/coreos/ignition/config/v1/types",
+			"revision": "11813c57bc05f30644bbae7891ae30a4a62e0b33",
+			"revisionTime": "2017-07-29T00:10:37Z"
+		},
+		{
+			"checksumSHA1": "7x+dN2R8uGCysAhnl6y05IMxTYM=",
+			"path": "github.com/coreos/ignition/config/v2_0",
+			"revision": "11813c57bc05f30644bbae7891ae30a4a62e0b33",
+			"revisionTime": "2017-07-29T00:10:37Z"
+		},
+		{
+			"checksumSHA1": "QpvUUkiyFiMOWWsCnd4Sb87nN9s=",
+			"path": "github.com/coreos/ignition/config/v2_0/types",
+			"revision": "11813c57bc05f30644bbae7891ae30a4a62e0b33",
+			"revisionTime": "2017-07-29T00:10:37Z"
+		},
+		{
+			"checksumSHA1": "DrFRPHwvmhT3wMT/f7yC+EXYBVo=",
+			"path": "github.com/coreos/ignition/config/v2_1",
+			"revision": "11813c57bc05f30644bbae7891ae30a4a62e0b33",
+			"revisionTime": "2017-07-29T00:10:37Z"
+		},
+		{
+			"checksumSHA1": "OIZPJsxrXCqqXrDxsRVzq4GsH3M=",
+			"path": "github.com/coreos/ignition/config/v2_1/types",
+			"revision": "11813c57bc05f30644bbae7891ae30a4a62e0b33",
+			"revisionTime": "2017-07-29T00:10:37Z"
+		},
+		{
+			"checksumSHA1": "BDwL2jXrf8l5b1L23F53evMLbRQ=",
+			"path": "github.com/coreos/ignition/config/validate",
+			"revision": "11813c57bc05f30644bbae7891ae30a4a62e0b33",
+			"revisionTime": "2017-07-29T00:10:37Z"
+		},
+		{
+			"checksumSHA1": "k53kBBh9dXtRlLcp6zXiH4W/iVc=",
+			"path": "github.com/coreos/ignition/config/validate/astjson",
+			"revision": "11813c57bc05f30644bbae7891ae30a4a62e0b33",
+			"revisionTime": "2017-07-29T00:10:37Z"
 		},
 		{
 			"checksumSHA1": "ViLVCc7CzzrGdJINAg8hv98CVkg=",
 			"path": "github.com/coreos/ignition/config/validate/report",
-			"revision": "211ab9d5a30be883c39a47642d05fdc6ce32b76e",
-			"revisionTime": "2016-12-23T13:37:58Z"
+			"revision": "11813c57bc05f30644bbae7891ae30a4a62e0b33",
+			"revisionTime": "2017-07-29T00:10:37Z"
 		},
 		{
 			"checksumSHA1": "dvabztWVQX8f6oMLRyv4dLH+TGY=",
@@ -584,6 +644,12 @@
 			"path": "github.com/vincent-petithory/dataurl",
 			"revision": "9a301d65acbb728fcc3ace14f45f511a4cfeea9c",
 			"revisionTime": "2016-03-30T18:21:26Z"
+		},
+		{
+			"checksumSHA1": "PMr/a5kcnC4toJtVwWhlU5E4tJY=",
+			"path": "go4.org/errorutil",
+			"revision": "034d17a462f7b2dcd1a4a73553ec5357ff6e6c6e",
+			"revisionTime": "2017-05-24T23:16:39Z"
 		},
 		{
 			"checksumSHA1": "vE43s37+4CJ2CDU6TlOUOYE0K9c=",
